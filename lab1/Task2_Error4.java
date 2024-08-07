@@ -6,6 +6,6 @@ public class Task2_Error4 {
         num2 - 4 ;
         sum = num1 + num2;
         System.out.println("sum = + sum);
-
+      ``
      }
 }
