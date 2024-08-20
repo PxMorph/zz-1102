@@ -34,7 +34,7 @@ public class Task1 {
     
     System.out.println("Volume of Sphere : ");
     sVol = uVol.nextDouble();
-    System.out.print("Volume : ");
+    System.out.print("Volume : " + (sVol)%.2f + "s");
     System.out.printf("%.2f", sVol);
     System.out.println(" Cubic cm");
     System.out.print("Surface Area : ");
