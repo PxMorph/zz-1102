@@ -33,15 +33,11 @@
 //      * Ask current year
 //
 //      * Future years
-//      * | # Apply limits
-//      * | | current year < future years 1 < future years 2
 //      * |
 //      * | - Ask first future year (init)
 //      * | - Ask second future year (init)
 //      
 //      * Past year
-//      * | # Apply limits
-//      * | | current year > past year
 //      * |
 //      * | - Ask past year
 //      
@@ -55,20 +51,44 @@
 //  2.2 PSEUDO CODE <-------------------------------
 //    - Start
 //    - INIT VARS 
+//      - current amount
 //      - current year
-//      - 
+//      - years 1st, 2nd, past year
 //
 //    - ask current amount
 //    - ask current year
 //    - ask first future year
-//      - if ( first > current year )
-//      - otherwise ask again - must be more
 //    - ask second future year
 //
 //    - ask past year
-//
+//      - if ( past year < current year )
+//      - otherwise ask agian - must be less
+
+import Java.util.Scanner;
+
 public class Task2 {
-  public static void main(String [] args) {
+  public static void main(String[] args) {
+    double currentAmount;
+    int cYear, stYear, ndYear, pYear;
     
+    Scanner uInput = new Scanner(System.in);
+    System.out.print("The current amount is: ");
+    currentAmount = uInput.nextDouble();
+    System.out.println(currentAmount);
+    
+    System.out.print("The current year is: ");
+    cYear = uInput.nextInt();
+    System.out.println(cYear);
+
+    System.out.print("The  ");
+
+
+
   }
+
+
+  public static double calcAmount(double cAmt,int oYr,int cYr) {
+    return cAmt ^ ((double)(oYr-cYr))
+  }
+
 }
