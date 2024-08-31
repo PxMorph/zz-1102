@@ -5,6 +5,7 @@ public class Act4 {
         
         // init scanner object
         Scanner input = new Scanner(System.in);
+        System.out.println("Welcome to a game of ROCK PAPER SISSOR");
         System.out.println("Player 1 : R - Rock | P - Paper | S - Sissor");
 
         // get player 1 input
