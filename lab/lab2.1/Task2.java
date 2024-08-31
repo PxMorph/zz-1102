@@ -72,6 +72,7 @@ public class Task2 {
     int cYear, stYear, ndYear, pYear;
     
     Scanner uInput = new Scanner(System.in);
+    
     System.out.print("The current amount is: ");
     currentAmount = uInput.nextDouble();
     System.out.println(currentAmount);
@@ -80,15 +81,23 @@ public class Task2 {
     cYear = uInput.nextInt();
     System.out.println(cYear);
 
-    System.out.print("The  ");
+    System.out.print("Enter the first year: ");
+    stYear = uInput.nextInt();
+    System.out.println(stYear);
 
-
-
+    System.out.print("Enter the second year: ");
+    ndYear = uInput.nextInt();
+    System.out.println(ndYear);
+  
+    System.out.print("Enter year from the past: ");
+    pYear = uInput.nextInt();
+    System.out.println(pYear);
+    
   }
 
 
-  public static double calcAmount(double cAmt,int oYr,int cYr) {
-    return cAmt ^ ((double)(oYr-cYr))
+  public static double calcAmount(double cAmt,int oYr) {
+    return cAmt ^ ((double)(oYr-cYear))
   }
 
 }
