@@ -2,18 +2,18 @@ import java.util.Scanner;
 
 public class Act4 {
     public static void main(String [] args) {
-        
+
         // init scanner object
         Scanner input = new Scanner(System.in);
         System.out.println("Welcome to a game of ROCK PAPER SISSOR");
         System.out.println("Player 1 : R - Rock | P - Paper | S - Sissor");
 
         // get player 1 input
-        char p1c = input.next().toLowerCase().charAt(0);
+        char p1c = input.nextLine().toLowerCase().charAt(0);
         System.out.println("Player 2 : R - Rock | P - Paper | S - Sissor");
 
         // get player 2 input
-        char p2c = input.next().toLowerCase().charAt(0);
+        char p2c = input.nextLine().toLowerCase().charAt(0);
 
         System.out.println(checkWinner( p1c, p2c));
 
