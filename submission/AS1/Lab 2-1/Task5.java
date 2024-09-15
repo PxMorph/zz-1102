@@ -29,8 +29,8 @@ public class Task5 {
         wKg = uInput.nextDouble();
 
         System.out.println("Price per Kg: $" + perKg);
-        System.out.println("Sales tax: " + (saleTax * 100));
-        // System.out.printf(  saleTax*100 + "%%" );
+        System.out.print("Sales tax: ");
+        System.out.printf("%.2f %n",  saleTax*100 );
 
         System.out.print("Total price: $" + calcPrices(noBags, wKg, perKg, saleTax));
 

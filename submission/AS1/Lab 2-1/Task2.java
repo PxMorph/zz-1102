@@ -58,18 +58,22 @@ public class Task2 {
   }
 
   public static void processThing( double cAmt, int cYr, int stYr, int ndYr, int rdYr ) {
-    System.out.println("The current amount is: " + cAmt);
-    System.out.println("The current year is: "+ cYr);
+    System.out.print("The current amount is: ");
+    System.out.printf("%.2f %n", cAmt);
+    System.out.println("The current year is: " + cYr);
 
     // contacts the calcamount function by giving the values needed for the calculation
-    System.out.println("The amount for year "+ stYr + " is " + calcAmount(cAmt, stYr, cYr));
-    System.out.println("The amount for year "+ ndYr + " is " + calcAmount(cAmt, ndYr, cYr));
-    System.out.println("The amount for year "+ rdYr + " is " + calcAmount(cAmt, rdYr, cYr));
+    System.out.print("The amount for year "+ stYr + " is ");
+    calcAmount(cAmt, stYr, cYr);
+    System.out.print("The amount for year "+ ndYr + " is ");
+    calcAmount(cAmt, ndYr, cYr);
+    System.out.print("The amount for year "+ rdYr + " is ");
+    calcAmount(cAmt, rdYr, cYr);
   }
 
-  public static double calcAmount(double cAmt,int oYr, int cYr) {
+  public static void calcAmount(double cAmt,int oYr, int cYr) {
     // calculate inflation || Return the finals value
-    return cAmt * Math.pow(0.97, ((oYr-cYr)));
+    System.out.printf("%.2f %n", cAmt * Math.pow(0.97, ((oYr-cYr))));
   }
 
 }
