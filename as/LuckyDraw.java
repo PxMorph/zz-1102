@@ -18,16 +18,16 @@ import java.util.Scanner;
 public class LuckyDraw {
   public static void main(String[] args) {
     boolean amsus = false;
-    char cont;
+    int cont;
     while (amsus == false) {
       int skibidi = 0;
       contSay("start");
       skibidi = assignDraw(drawDice());
       printResult(skibidi);
-      System.out.print("Do you want to continue? (Y,n): ");
+      System.out.print("Do you want to continue? (1 to continue,-1 to quit): ");
       Scanner uInput2 = new Scanner(System.in);
-      cont = uInput2.next().charAt(0);
-      if(cont == 'n' || cont == 'N'){
+      cont = uInput2.nextInt();
+      if(cont == -1){
         amsus = true;
       }
       
