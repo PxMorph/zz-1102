@@ -17,10 +17,21 @@ import java.util.Scanner;
 
 public class LuckyDraw {
   public static void main(String[] args) {
-    int skibidi = 0; // zero is default
-    contSay("start");
-    skibidi = assignDraw(drawDice());
-
+    boolean amsus = false;
+    char cont;
+    while (amsus == false) {
+      int skibidi = 0;
+      contSay("start");
+      skibidi = assignDraw(drawDice());
+      printResult(skibidi);
+      System.out.print("Do you want to continue? (Y,n): ");
+      Scanner uInput2 = new Scanner(System.in);
+      cont = uInput2.next().charAt(0);
+      if(cont == 'n' || cont == 'N'){
+        amsus = true;
+      }
+      
+    }
   }
   
   public static int drawDice() {
@@ -38,11 +49,11 @@ public class LuckyDraw {
   }
 
   public static int rollDie() {
-    return (Math.random() * 6) + 1;
+    return (int)(Math.random() * 6.0) + 1;
   }
 
-  public static void assignDraw(int totalDice) {
-    if (totalDice = 12) {
+  public static int assignDraw(int totalDice) {
+    if (totalDice == 12) {
       return 1;
     } else if (totalDice < 6 || totalDice > 12) {
       return 2;
@@ -71,7 +82,7 @@ public class LuckyDraw {
     }
   }
 
-  public static void sayReward(string sR) {
+  public static void sayReward(String sR) {
     System.out.println("Congratulation your reward is " + sR);
   }
 
@@ -79,6 +90,5 @@ public class LuckyDraw {
     System.out.println("press anything to " + cS);
     Scanner uInput = new Scanner(System.in);
     uInput.nextLine();
-    uInput.close();
   }
 }
