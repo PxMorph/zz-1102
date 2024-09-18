@@ -17,14 +17,16 @@ import java.util.Scanner;
 
 public class LuckyDraw {
   public static void main(String[] args) {
+    int skibidi = 0; // zero is default
     contSay("start");
-     drawDice();
+    skibidi = assignDraw(drawDice());
 
   }
   
   public static int drawDice() {
     int d1 = rollDie();
     int d2 = rollDie();
+
     System.out.println("First Die: " + d1);
     contSay("continue");
     System.out.println("Second Die: " + d2);
@@ -39,10 +41,38 @@ public class LuckyDraw {
     return (Math.random() * 6) + 1;
   }
 
+  public static void assignDraw(int totalDice) {
+    if (totalDice = 12) {
+      return 1;
+    } else if (totalDice < 6 || totalDice > 12) {
+      return 2;
+    } else if (totalDice < 1 || totalDice > 6) {
+      return 3;
+    } else {
+      return 0;
+    }
+  }
 
+  public static void printResult(int skibidi) {
+    switch (skibidi) {
+      case 1:
+        sayReward("A Grand Price");
+        break;
+      case 2:
+        sayReward("Second Price");
+        break;
+      case 3:
+        sayReward("Third Price");
+        break;
+      default:
+        //skibidi rizzz
+        sayReward("Participant Reward (image w/ me <3)");
+        break;
+    }
+  }
 
-  public static void printResult() {
-    
+  public static void sayReward(string sR) {
+    System.out.println("Congratulation your reward is " + sR);
   }
 
   public static void contSay(String cS) {
