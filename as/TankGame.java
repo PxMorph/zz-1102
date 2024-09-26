@@ -19,32 +19,26 @@
 // 5. - end the game with all the ball is inside
 
 import java.util.Scanner;
+import java.util.Formatter;
 
 public class TankGame {
   public static void main(String[] args) {
-    boolean game = false;
-    Scanner uInput1 = new Scanner(System.in);
-    while (!game) {
-      // startGame();
-      int uiStart;
-      while (true) {
-        System.out.print("Enter Value: ");
-        uiStart = uInput1.nextInt();
-        if (uiStart != 1 || uiStart != 2) {
-          System.out.println("Please Enter the either 1 or 2");
-        } else {
-          break;
-        }
-      }
+    public int[] smallTanks = {};
+    public mainTank = 0;
+    smallTanks[] = initGame();
+    startGame();
+  }
+  
+  public static void initGame() {
+    for (int i = 0; i < 3; i++) {
+      smallTanks[i] = randomBall();
     }
   }
   
   public static void startGame() {
-    int[] smallTanks = {randomBall(), randomBall(), randomBall()};
-    int mainTank = 0;
-    
-    
-
+    while(true){
+      
+    }
   }
 
   public static int randomBall() {
@@ -52,7 +46,9 @@ public class TankGame {
     return (int)(Math.random() * 5);
   }
 
-  public static void printTanks(int t1, int t2, int t3, int mT) {
-    System.out.println("[" + t1 + "] [" + t2 + "] [" + t3 + "] [" + mT + "]");
+  public static void printTanks(int[] smallTanks) {
+    for (int i = 0; i < smallTanks.lengths; i++) {
+      System.out.format("Mini Tank:%1d [%3d]", i, smallTanks[i]);
+    }
   }
 }
