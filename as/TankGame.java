@@ -18,37 +18,95 @@
 //      <- which means the user must move the the tanks with the balls first
 // 5. - end the game with all the ball is inside
 
+
+/*
+  todo task
+  - start
+  - storage x
+  - init tanks
+  - random ball for each tanks
+  - move ball
+  
+  - start
+  - select tank
+  - if i = 1, 2 ,3
+  - check i+1 except 3+1
+  - tank is !full
+  - input amt 
+  - check i+1 except 3+1
+  - tank is !overflown
+  - print tank
+  - check sum of all mini tanks = 0
+  - game over
+  
+*/
+
+
+
 import java.util.Scanner;
 import java.util.Formatter;
 
 public class TankGame {
   public static void main(String[] args) {
-    public int[] smallTanks = {};
-    public mainTank = 0;
-    smallTanks[] = initGame();
     startGame();
   }
-  
-  public static void initGame() {
-    for (int i = 0; i < 3; i++) {
-      smallTanks[i] = randomBall();
+
+
+  public static int[] genTank(int[] miniTanks) {
+    int amtMTank = 3
+    for (int i = 0; i < amtMTank; i++) {
+      miniTanks[i] = (int)(Math.random() * 5);
     }
+    return miniTanks[];
   }
-  
+
   public static void startGame() {
-    while(true){
-      
+    int [] mTanks = {};
+    mTanks[] = genTank(mTanks[]); 
+    int mainTank = 0;
+    Scanner uInput1 = new Scanner(System.in);
+    
+    while (true) {
+      printTanks(mTanks[]);
+      System.out.println("which tank of the ball you want to move:-");
+      System.out.println("1. Mini Tank 1 -> Mini Tank 2");
+      System.out.println("2. Mini Tank 2 -> Mini Tank 3");
+      System.out.println("3. Mini Tank 3 -> Main Tank");
+      System.out.println("Enter: ");
+      int uI1 = uInput1.nextInt();
+      if (!full(mTanks[uI1]) || uI1 == 3) {
+        System.out.println("Amount of ball to move: ");
+        int ui2 = uInput1.nextInt();
+        if (!overflown(mTanks[uI1], uI2)){
+          if(!oobBall(mTanks[uI1-1])) {
+            // continue here
+          } else {
+            System.out.println("Error: You selected to move more ball than that is available");
+          } 
+        } else {
+          System.out.println("Error: There is not enough capacity to make the move");
+        }
+      } else {
+        System.out.println("Error: capacity is full");
+      }
     }
   }
 
-  public static int randomBall() {
-    // start from generate a range of 0-5 balls
-    return (int)(Math.random() * 5);
-  }
-
-  public static void printTanks(int[] smallTanks) {
-    for (int i = 0; i < smallTanks.lengths; i++) {
-      System.out.format("Mini Tank:%1d [%3d]", i, smallTanks[i]);
+  public static boolean full(int mTnext) {
+    if(mTnext == 5){
+      return true;
+    } else {
+      return false;
     }
   }
+
+  public static void printTanks(int [] mt, int maint) {
+    for (int i = 0; i < mt[].length; i++) {
+      System.out.format("Mini Tank:%2d [%2d]", i+1, mt[i] );
+    }
+    System.out.format("Main Tank: [%2d]", maint);
+  }
+
+  
+
 }
