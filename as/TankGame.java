@@ -53,42 +53,72 @@ public class TankGame {
 
 
   public static int[] genTank(int[] miniTanks) {
-    int amtMTank = 3
+    int amtMTank = 3;
     for (int i = 0; i < amtMTank; i++) {
       miniTanks[i] = (int)(Math.random() * 5);
     }
-    return miniTanks[];
+    return miniTanks;
   }
 
   public static void startGame() {
-    int [] mTanks = {};
-    mTanks[] = genTank(mTanks[]); 
+    int [] mTanks = new int[3];
+      mTanks = genTank(mTanks);
     int mainTank = 0;
     Scanner uInput1 = new Scanner(System.in);
     
     while (true) {
-      printTanks(mTanks[]);
+      printTanks(mTanks, mainTank);
+      if(!hasValue(mTanks)){
+        System.out.println("GameOver!!!");
+        break;
+      }
       System.out.println("which tank of the ball you want to move:-");
       System.out.println("1. Mini Tank 1 -> Mini Tank 2");
       System.out.println("2. Mini Tank 2 -> Mini Tank 3");
       System.out.println("3. Mini Tank 3 -> Main Tank");
-      System.out.println("Enter: ");
+      System.out.print("Enter: ");
       int uI1 = uInput1.nextInt();
-      if (!full(mTanks[uI1]) || uI1 == 3) {
-        System.out.println("Amount of ball to move: ");
-        int ui2 = uInput1.nextInt();
-        if (!overflown(mTanks[uI1], uI2)){
-          if(!oobBall(mTanks[uI1-1])) {
-            // continue here
-          } else {
-            System.out.println("Error: You selected to move more ball than that is available");
-          } 
+      if (uI1 > 3) {} else {
+       if (uI1 == 3 || !full(mTanks[uI1])) {
+          System.out.println("Amount of ball to move: ");
+          int uI2 = uInput1.nextInt();
+          if(uI1 == 3){
+            if (!oobBall(mTanks[uI1-1], uI2)) {
+              mainTank += uI2;
+              mTanks[uI1-1] = mTanks[uI1-1] - uI2;
+            } else {
+
+            }
+          }
+          // check if ball is more than the cap
+          if (uI1 != 3 && !overflown(mTanks[uI1], uI2)){
+            // check if the ball requested is out bound
+            if(!oobBall(mTanks[uI1-1], uI2)) {
+              System.out.println("test");
+              mTanks[uI1-1] = mTanks[uI1-1] - uI2;
+              mTanks[uI1] += uI2;
+            } else {
+              System.out.println("Error: You selected to move more ball than that is available\n");
+            } 
+          } else if (uI1 != 3) {
+            System.out.println("Error: There is not enough capacity to make the move\n");
+          }
         } else {
-          System.out.println("Error: There is not enough capacity to make the move");
+          System.out.println("Error: capacity is full\n");
         }
-      } else {
-        System.out.println("Error: capacity is full");
       }
+    }
+  }
+
+  public static boolean hasValue(int [] mT) {
+    int val = 0;
+    for (int i = 0; i < 3; i++) {
+      val += mT[i];
+    }
+    if(val != 0){
+      return true;
+    } else {
+      return false;
     }
   }
 
@@ -100,11 +130,27 @@ public class TankGame {
     }
   }
 
-  public static void printTanks(int [] mt, int maint) {
-    for (int i = 0; i < mt[].length; i++) {
-      System.out.format("Mini Tank:%2d [%2d]", i+1, mt[i] );
+  public static boolean overflown(int mTnext, int ballsIn) {
+    if((mTnext + ballsIn) > 5){
+      return true;
+    } else {
+      return false;
     }
-    System.out.format("Main Tank: [%2d]", maint);
+  }
+
+  public static boolean oobBall(int mT, int ballsIn) {
+    if(mT < ballsIn){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public static void printTanks(int [] mt, int maint) {
+    for (int i = 0; i < 3; i++) {
+      System.out.format("Mini Tank:%2d [%2d]\n", i+1, mt[i] );
+    }
+    System.out.format("Main Tank:   [%2d]\n", maint);
   }
 
   
