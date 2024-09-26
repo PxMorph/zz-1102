@@ -33,11 +33,12 @@ public class TowerGame {
 
   public static int playerMove(String player) {
     Scanner uinput2 = new Scanner(System.in);
-    System.out.println("Its " + player + " turn! Enter to continue");
+    System.out.println("\nIts " + player + " turn! Enter to continue");
     uinput2.nextLine();
 
     int val1 = genRandom();
     int val2 = genRandom();
+    System.out.println(player + " rolled a " + val1 + " and " + val2 + "\n total:" + (val1 + val2) );
 
     return checkEven(val1+val2);
   }
