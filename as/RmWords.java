@@ -8,7 +8,11 @@ public class RmWords {
     System.out.println("Enter sentence with 3 or more words");
     String sentence = userInput.nextLine();
     int noOfWord = noWords(sentence);
-    getWords(sentence, noOfWord);
+    if(noOfWord >= 3){
+      getWords(sentence, noOfWord);
+    } else {
+      System.out.println("You need to type 3 or more words!!");
+    }
   }
   
   public static void getWords(String sentence, int noOfWord) {
@@ -16,15 +20,22 @@ public class RmWords {
     String getNL = sentence;
     for (int i = 0; i < noOfWord; i++) {
       int nextSpace = getNL.indexOf(' ');
-      words[i] = getNL.substring(0,nextSpace);
+      if (nextSpace > 0) {
+        words[i] = getNL.substring(0,nextSpace);
+      } else if (nextSpace < 0) {
+        words[i] = getNL.substring(0);
+      }
       getNL = getNL.substring(nextSpace+1);
     }
     
-    for (int i = 1; i < words.length-1; i++) {
+    //Prints all the words
+    for (int i = 0; i < words.length; i++) {
       System.out.println(words[i]);
     }
   }
 
+  // finding total of words for checking
+  // also for the arraying
   public static int noWords(String sentence) {
     String getNL = sentence;
     //System.out.println(getNL.indexOf(' '));
@@ -42,7 +53,6 @@ public class RmWords {
         count++;
       }
       getNL = getNL.substring(nextSpace+1);
-      //System.out.println(nextSpace);
     }
     return count;
   }
