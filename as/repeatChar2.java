@@ -19,15 +19,19 @@ public class repeatChar2 {
   }
 
   private static String beads(String s, int n) {
-    if(!checkBeads(s,n)){
-      s.substring(n)
+    if(checkBeads(s,n)){
+      return s.substring(0,n);
     } else {
-
+      String newWord = "";
+      while (!checkBeads(newWord,n)) {
+        newWord = newWord + s;
+      }
+      return newWord.substring(0,n);
     }
   }
 
   private static boolean checkBeads(String s, int n) {
-    if (s.length() is >= n ) {
+    if (s.length() >= n ) {
       return true;
     }
     return false;
