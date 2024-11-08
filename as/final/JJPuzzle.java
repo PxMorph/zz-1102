@@ -1,7 +1,7 @@
 public class JJPuzzle {
   public static void main(String[] args) {
-    int [] puzzle = new int [20];
-    int [] storePuzzle = new int [20]; 
+    int [] puzzle = new int [20]; // initial puzzle
+    int [] storePuzzle = new int [20]; // storage puzzle (where the initial puzzle is modified)
 
     start(puzzle);
     showPuzzle(puzzle);
@@ -10,22 +10,29 @@ public class JJPuzzle {
     OnlyOdd(puzzle, storePuzzle);
     OnlyCouple(puzzle, storePuzzle);
   }
+
+  // start initialising the puzzle
   public static void start(int [] puzzle) {
+    // get random color on every block
     for (int i = 0; i < 20; i++) {
       puzzle[i] = randomColor();
     }
   }
 
 
-  //Testing methods
-
+  // print puzzle - based on the puzzle array input
   public static void showPuzzle(int [] puzzled) {
     System.out.print("| ");
+
+    // prints every block
     for (int i = 0; i < 20; i++) {
       System.out.print(puzzled[i] + " | ");
     }
+
     System.out.println("\nKey:");
     System.out.println("0 = White | 1 = Yellow | 2 = Red | 3 = Green");
+
+    // get the number of colors
     int ny = 0; int nr = 0; int ng = 0;
     for (int i = 0; i < puzzled.length; i++) {
       if (puzzled[i] == 1) {
@@ -41,15 +48,19 @@ public class JJPuzzle {
 
   }
 
+  //reset the storage puzzle to match with initial puzzle
   public static void resetArray(int [] puzzle, int [] storePuzzle) {
     for (int i = 0; i < puzzle.length; i++) {
       storePuzzle[i] = puzzle[i];
     }
   }
 
+  // Function for OnlyGreenn
   public static void OnlyGreen(int [] puzzle, int [] storePuzzle) {
     resetArray(puzzle, storePuzzle);
-    int greencount = 20;
+    int greencount = storePuzzle.length;
+    // for anything that is not green, set to White
+    // -1 if not green
     for (int i = 0; i < storePuzzle.length; i++) {
       if (storePuzzle[i] != 3) {
         storePuzzle[i] = 0;
@@ -61,10 +72,13 @@ public class JJPuzzle {
     showPuzzle(storePuzzle);
     System.out.println("Total: " + greencount);
   }
-
+  
+  //function for only yellow and red
   public static void OnlyYR(int [] puzzle, int [] storePuzzle) {
     resetArray(puzzle, storePuzzle);
-    int YRcount = 20;
+    int YRcount = storePuzzle.length;
+    // for anything that green aka not red or green.
+    // set to white
     for (int i = 0; i < storePuzzle.length; i++) {
       if (storePuzzle[i] == 3) {
         storePuzzle[i] = 0;
@@ -79,6 +93,7 @@ public class JJPuzzle {
 
   public static void OnlyOdd(int [] puzzle, int [] storePuzzle) {
     resetArray(puzzle, storePuzzle);
+    // for every odd set to white
     for (int i = 0; i < storePuzzle.length; i++) {
       if ((i%2)!=0) {
         storePuzzle[i] = 0;
@@ -92,7 +107,9 @@ public class JJPuzzle {
   public static void OnlyCouple(int [] puzzle, int [] storePuzzle) {
     resetArray(puzzle, storePuzzle);
     for (int i = 0; i < storePuzzle.length; i++) {
-      if (i==0) {
+      // check every color block if the previous or next block is the same as the block.
+      // then the color is a couple or tripple, woaw friiki
+      if (i==0) { // at the start
         if (storePuzzle[i] == storePuzzle[i+1]) {} else {
           storePuzzle[i] = 0;
         }
@@ -101,7 +118,7 @@ public class JJPuzzle {
           storePuzzle[i] = 0;
         }
 
-      } else {
+      } else { // in between
         if (storePuzzle[i] == storePuzzle[i-1] || storePuzzle[i] == storePuzzle[i+1]) {} else {
           storePuzzle[i] = 0;
         }
@@ -113,6 +130,7 @@ public class JJPuzzle {
     showPuzzle(storePuzzle);
 
   }
+  // return random number from 1 to 3. exclude 0/white
   public static int randomColor() {
     return (int)(Math.random() * 3.0 + 1.0);
   }
