@@ -9,6 +9,7 @@ public class JJPuzzle {
     OnlyYR(puzzle, storePuzzle);
     OnlyOdd(puzzle, storePuzzle);
     OnlyCouple(puzzle, storePuzzle);
+    OnlyLeft(puzzle, storePuzzle);
   }
 
   // start initialising the puzzle
@@ -129,6 +130,17 @@ public class JJPuzzle {
     System.out.println("OnlyCouple");
     showPuzzle(storePuzzle);
 
+  }
+
+  public static void OnlyLeft(int [] puzzle, int [] storePuzzle) {
+    resetArray(puzzle, storePuzzle);
+    for (int i = (storePuzzle.length/2); i < storePuzzle.length; i++) {
+      storePuzzle[i] = 0;
+    }
+     System.out.println();
+    System.out.println("OnlyLeft");
+    showPuzzle(storePuzzle);
+;
   }
   // return random number from 1 to 3. exclude 0/white
   public static int randomColor() {
